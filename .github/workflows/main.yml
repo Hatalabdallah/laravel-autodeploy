@@ -27,7 +27,7 @@ jobs:
       with:
         host: projects.kyakabi.com
         username: ${{ secrets.SSH_USERNAME }}
-        password: ${{ secrets.SSH_PASSWORD }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         script: |
           cd /home/kyakabic/projects.kyakabi.com/
           php artisan optimize:clear
