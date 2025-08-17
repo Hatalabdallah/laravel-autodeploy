@@ -21,3 +21,15 @@ jobs:
         protocol: ftp
         port: 21
         log-level: verbose
+
+    - name: Run command on server
+      uses: appleboy/ssh-action@master
+      with:
+        host: projects.kyakabi.com
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        script: |
+          cd /home/kyakabic/projects.kyakabi.com
+          php artisan optimize:clear
+          php artisan view:cache
+          php artisan route:cache
